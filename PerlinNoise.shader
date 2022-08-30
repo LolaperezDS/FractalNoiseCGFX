@@ -53,7 +53,7 @@ Shader "Custom/PerlinNoise"
 
         float random(float3 coord, int resolution) {
             float s = sin(coord.z * resolution * resolution + coord.x * resolution + coord.y);
-            return abs(frac(s * 6534.235476)); // range 0 -- 1
+            return abs(frac(s * 65364.2354768)); // range 0 -- 1
         }
 
         float quanticInterpolation(float t) {  // input range 0 -- 1
