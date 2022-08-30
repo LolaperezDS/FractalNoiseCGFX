@@ -56,9 +56,8 @@ Shader "Custom/PerlinNoise"
             return abs(frac(s * 65364.2354768)); // range 0 -- 1
         }
 
-        float quanticInterpolation(float t) {  // input range 0 -- 1
+        float quinticInterpolation(float t) {  // input range 0 -- 1
             return t * t * t * (t * (t * 6 - 15) + 10);
-            //return t;
         }
 
         float getNoise(float2 uv, float res, float z) {
