@@ -53,7 +53,7 @@ Shader "Custom/PerlinNoise"
 
         float random(float3 coord, int resolution) {
             float s = sin(coord.z * resolution * resolution + coord.x * resolution + coord.y);
-            return abs(frac(s * 65364.2354768)); // range 0 -- 1
+            return (frac(s * 65364.2354768) + 1) / 2; // range 0 -- 1
         }
 
         float quinticInterpolation(float t) {  // input range 0 -- 1
@@ -76,7 +76,7 @@ Shader "Custom/PerlinNoise"
             float bot_left_forward = random(global_square_coord + float3(0, 1, 1), res);
             float bot_right_forward = random(global_square_coord + float3(1, 1, 1), res);
 
-            local_coord = float3(quinticInterpolation(local_coord.x), quinticInterpolation(local_coord.y), quinticInterpolation(local_coord.z));
+            local_coord = float3(quinticInterpolation(local_coord.x), quinticInterpolation(local_coord.y), local_coord.z);
 
             float txb = lerp(top_left_back, top_right_back, local_coord.x);
             float bxb = lerp(bot_left_back, bot_right_back, local_coord.x);

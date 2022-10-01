@@ -100,10 +100,16 @@ Shader "Custom/CloudShader"
         }
 
         float paint(float x) {
+            if (x > _ClampFactor) {
+                return (x - _ClampFactor) / _ClampFactor;
+            }
+            return 0;
+            /*
             if (x < _ClampFactor) {
                 return 0;
             }
             return 0.9;
+            */
         }
 
         void surf (Input IN, inout SurfaceOutputStandard o)
@@ -123,6 +129,8 @@ Shader "Custom/CloudShader"
             float time_factor = _Time[0] / global_multiplier;
 
             float summary_octave_factor = _OctaveFactor1 + _OctaveFactor2 + _OctaveFactor3 + _OctaveFactor4;
+
+            uv = uv + _Time[0] / 3;
 
             float4 color_out = _OctaveFactor1 * getNoise(uv, res1, time_factor) / summary_octave_factor;
             color_out += _OctaveFactor2 * getNoise(uv, res2, time_factor) / summary_octave_factor;
