@@ -1,2 +1,2 @@
 # PerlinNoiseCGFX
-Methods for creating perlin noise with a shader.
+Methods for creating fractal noise with a shader.
