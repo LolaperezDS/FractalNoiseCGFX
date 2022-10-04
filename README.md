@@ -1,4 +1,4 @@
-# PerlinNoiseCGFX
+# FractalNoiseCGFX
 Methods for creating fractal noise with a shader.
 
 ![Иллюстрация к проекту](https://github.com/LolaperezDS/PerlinNoiseCGFX/blob/main/images/use_case.png)
